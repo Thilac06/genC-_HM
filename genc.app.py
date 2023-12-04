@@ -40,12 +40,15 @@ class ExcelTableWidget(QMainWindow):
                     item = QTableWidgetItem(str(value))
                     self.table.setItem(current_row, col, item)
 
-                    
+                   
                     if col != 0:
                         
                         is_numerical = isinstance(value, (int, float))
                         if is_numerical:
-                            item.setBackground(QColor(0, 255, 0))  # Green
+                            if value == 0.0:
+                                item.setBackground(QColor(0, 0, 255))  # Blue
+                            else:
+                                item.setBackground(QColor(0, 255, 0))  # Green
                         else:
                             item.setBackground(QColor(255, 0, 0))  # Red
 
